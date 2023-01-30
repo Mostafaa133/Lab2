@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GoLocation</title>
+    </head>
+    <body>
+        <h1>Click on the button to find your location</h1>
+        <button onclick="getLoc()">share location</button>
+        <script>
+            function getLoc(){
+                navigator.geolocation.getCurrentPosition(showLoc,showErr,options)
+            }
+            function showLoc(e){
+                var long=e.coords.longitude,
+                lati=e.coords.latitude;
+                 location.assign("http://maps.google.com/maps?q" + lati + ",+" + long)
+            }
+            function showErr(err){
+                switch(err.code){
+                    case 0:
+                alert(err.message);
+            break;
+          case 1:
+                alert(err.message);
+            break;
+          case 2:
+                alert(err.message);
+            break;
+          case 3:
+                alert("no time");
+            break;
+        }
+                
+            }
+            var options={
+                enableHighAccuracy:true
+            };
+        </script>
+    </body>
+</html>

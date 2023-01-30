@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=V, initial-scale=1.0">
+    <title>Web Forms validation</title>
+    <style>
+       
+
+  form{
+border: 3px solid black;
+padding : 0px 5%;
+
+}
+  /* Full-width inputs */
+  input[type=text], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid red;
+ display: inline-block;
+    
+  }
+  
+  /* btn style */
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+margin-left:90px;
+margin-bottom:40px;
+    width: 90%;
+  }
+button:hover{
+opacity: 0.8;
+color:black;
+}
+ 
+.validation{
+    font-size: 12px;
+    opacity: 0.5;
+    color: red;
+}  
+input[type=text]:invalid, input[type=email]:invalid {
+    border-color: red;
+}
+
+input[type=text]:valid + .validation, input[type=email]:valid +.validation {
+    display: none;
+}
+
+input[type=text]:valid, input[type=email]:valid {
+    border-color: #04AA6D;
+}
+
+    </style>
+</head>
+<body>
+    
+    <form action="T2-formdata.html" target="_blank">
+        <h1> Change Email Address</h1>
+        <div >
+            
+            <input type="text" 
+            placeholder="Enter Username" 
+            name="uname"
+            id="username" 
+            pattern="[A-Za-z]{5}" required>
+            <span class="validation">The username can be only alphanetic characters and more than 5 char</span>
+          </div>
+       <div >
+        
+            <input type="email"
+             placeholder="Enter New Email" 
+             name="email" required
+             id="useremail">
+            <span class="validation"> Email not include any special char except @ </span>
+        
+            <button type="submit" id="btn">Login</button>
+          </div>
+
+   </form>
+   <script>
+    var btn = document.getElementById("btn")
+      btn.addEventListener('click',function(){
+        var name = document.getElementById("username").value;
+        var email = document.getElementById("useremail").value;
+        localStorage.setItem("username",name);
+        localStorage.setItem("useremail",email);
+        console.log(localStorage.getItem("username"));
+        console.log(sessionStorage.getItem("useremail"));
+        
+      });
+   </script>
+</body>
+</html>
